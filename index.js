@@ -1,10 +1,13 @@
-// # Ghost bootloader
-// Orchestrates the loading of Ghost
-// When run from command line.
+var ghost = require('ghost');
+console.log(ghost);
+var express = require('express');
+var app = express();
+var expressApp = module.exports = express();
+app.use(express.static(__dirname + '/public'));
+var options = {
+"config" : false,
+"app" : app
+};
 
-var ghost = require('./core'),
-    errors = require('./core/server/errorHandling');
-
-ghost().otherwise(function (err) {
-    errors.logErrorAndExit(err, err.context, err.help);
-});
+ghost(options);
+app.listen(process.env.PORT || 3000);

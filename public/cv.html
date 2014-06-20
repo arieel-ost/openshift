@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html ng-app="cv">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <title>Artem Ostankov | CV </title>
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#nav_bar").load("nav_bar.html");
+        });
+    </script>
+</head>
+<body ng-controller="WorkController as workCtrl">
+
+    <div id="nav_bar"></div>
+    
+    <div class="container" style=" padding-top: 80px; border-left:1px solid #ccc;border-right:1px solid #ccc">
+    <div class="row">
+        <div class="col-md-2">
+            <img class="img-rounded img-responsive" src="img/me_small.jpg" alt="Artem Face Image">
+        </div>
+        <div class="col-md-3 hidden-xs hidden-sm">&nbsp;</div>
+        <div class="col-md-9">
+            <h1>Artem Ostankov</h1>
+
+            <h3>Software Developer</h3>
+
+            <p><span style="display:block;width:25px;float:left"><i class="icon-home"></i></span><span>München, Germany</span>
+            </p>
+
+            <p><span style="display:block;width:25px;float:left"><i class="icon-envelope"></i></span><span>artem@ostankov.com</span>
+            </p>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Work Experience</h2>
+        </div>
+    </div>
+    <hr/>
+    <div class="list-group-item" ng-repeat="work in workCtrl.workExp">
+        <div class="row">
+            <div class="col-md-3" style="text-align:right">
+                <p class="lead">{{work.start}} - {{work.end}}</p>
+                <p class="text-right" >
+                    <img  class="img-rounded" ng-show="{{work.img != null}}" ng-src={{work.img}} />
+                </p>
+            </div>
+            <div class="col-md-9">
+                <p class="lead">Senior Software Developer</p>
+                <dl class="dl-horizontal">
+                    <dt>Company</dt>
+                    <dd>{{work.company}} </dd>
+                    <dt ng-show="{{work.site != null}}" >Site</dt>
+                    <dd ng-show="{{work.site != null}}" ><a href="http://{{work.site}}/" >{{work.site}}</a></dd>
+                    <dt>City</dt>
+                    <dd>{{work.city}}</dd>
+                    <dt>Activity field</dt>
+                    <dd>{{work.desc}}</dd>
+                </dl>
+                <h4>Responsibilities:</h4>
+                <ul ng-repeat="resp in work.resp">
+                    <li>{{resp}}</li>
+                </ul>
+            </div>
+        </div>
+        </br>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Studies</h2>
+        </div>
+    </div>
+    <hr/>
+    <div class="list-group-item" ng-repeat="study in workCtrl.studies">
+        <div class="row">
+            <div class="col-md-3" style="text-align:right"><p class="lead">{{study.start}} - {{study.end}}</p></div>
+            <div class="col-md-9">
+                <p class="lead">{{study.title}}</p>
+                <div class="dl-horizontal">
+                    <p>{{study.org}}, {{study.city}}</p>
+                    <p>{{study.department}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Personal Interests</h2>
+        </div>
+    </div>
+    <div >
+        <div class="row">
+            <div class="col-md-5" ng-repeat="interest in workCtrl.interests">
+                <ul>
+                    <li>{{interest}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Additional notes</h2>
+        </div>
+    </div>
+    <div >
+        <div class="row">
+            <div class="col-md-5" ng-repeat="addition in workCtrl.additions">
+                <ul>
+                    <li>{{addition}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Languages</h2>
+        </div>
+    </div>
+    <div >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Level
+                    </th>
+                    <th>
+                        Experience
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="progLang in workCtrl.progLangs | orderBy:'-lvl'">
+                    <td>
+                        {{progLang.title}}
+                    </td>
+                    <td>
+                        {{workCtrl.getExp(progLang.lvl)}}
+                    </td>
+                    <td>
+                        {{progLang.exp}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Technologies</h2>
+            </div>
+        </div>
+        <div >
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Level
+                    </th>
+                    <th>
+                        Experience
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="tech in workCtrl.techs | orderBy:'-lvl'">
+                    <td>
+                        {{tech.title}}
+                    </td>
+                    <td>
+                        {{tech.getExp(tech.lvl)}}
+                    </td>
+                    <td>
+                        {{tech.exp}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Languages</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>Native:</dt>
+                <dd>Russian and Ukrainian</dd>
+                <dt>Fluent:</dt>
+                <dd>English</dd>
+                <dt>Middle:</dt>
+                <dd>German</dd>
+            </dl>
+        </div>
+    </div>
+    </div>
+    
+    
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+</body>
+</html>
