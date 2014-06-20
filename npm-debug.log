@@ -1,7 +1,7 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
-2 info using npm@1.4.9
-3 info using node@v0.10.28
+2 info using npm@1.4.3
+3 info using node@v0.10.26
 4 verbose node symlink /usr/bin/node
 5 verbose run-script [ 'prestart', 'start', 'poststart' ]
 6 info prestart artem@0.1.1
@@ -18,10 +18,10 @@
 11 error You can get their info via:
 11 error     npm owner ls artem
 11 error There is likely additional logging output above.
-12 error System Linux 3.8.0-39-generic
+12 error System Linux 3.5.0-46-generic
 13 error command "/usr/bin/node" "/usr/bin/npm" "start"
-14 error cwd /home/artem/WORK/web/angular/angular
-15 error node -v v0.10.28
-16 error npm -v 1.4.9
+14 error cwd /home/arieel/WORK/node/angular
+15 error node -v v0.10.26
+16 error npm -v 1.4.3
 17 error code ELIFECYCLE
 18 verbose exit [ 1, true ]

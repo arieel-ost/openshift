@@ -10,4 +10,11 @@ var options = {
 };
 
 ghost(options);
-app.listen(process.env.PORT || 3000);
+
+if(process.env.OPENSHIFT_NODEJS_PORT && process.env.OPENSHIFT_NODEJS_IP) {
+    app.listen(process.env.OPENSHIFT_NODEJS_PORT, process.env.OPENSHIFT_NODEJS_IP);
+}
+else {
+    //require('derby').run(__dirname + '/lib/server' );
+    app.listen(3000);
+}
