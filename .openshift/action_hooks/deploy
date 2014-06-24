@@ -9,8 +9,8 @@ if [ ! -d "$OPENSHIFT_DATA_DIR/content/images" ]; then
 	mkdir -p $OPENSHIFT_DATA_DIR/content/images
 fi
 echo "Symlinking data directory"
-ln -sf $OPENSHIFT_DATA_DIR/content/data $OPENSHIFT_REPO_DIR/content/data
+ln -sf $OPENSHIFT_DATA_DIR/content/data $OPENSHIFT_REPO_DIR/node_modules/ghost/content/data
 echo "Symlinking images directory"
-ln -sf $OPENSHIFT_DATA_DIR/content/images $OPENSHIFT_REPO_DIR/content/images
+ln -sf $OPENSHIFT_DATA_DIR/content/images $OPENSHIFT_REPO_DIR/node_modules/ghost/content/images
 
 
